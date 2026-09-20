@@ -1,4 +1,5 @@
-import subprocess
+import rpi_gpio as GPIO
+import time
 
 PINS = [17, 18, 27, 22]
 
@@ -9,49 +10,35 @@ SEQUENCE = [
     [0, 0, 1, 1],
 ]
 
-current_state = [0, 0, 0, 0]
+GPIO.setmode(GPIO.BCM)
 
-
-def gpio(pin, value):
-    subprocess.run(
-        [
-            "gpio-rp1",
-            "set",
-            str(pin),
-            "dh" if value else "dl",
-        ],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    )
-
-
-def set_motor(new_state):
-    global current_state
-
-    for i in range(4):
-
-        # Only touch GPIO if it actually changed
-        if new_state[i] != current_state[i]:
-            gpio(PINS[i], new_state[i])
-
-    current_state = new_state.copy()
-
-
-# Configure outputs once
 for pin in PINS:
-    subprocess.run(
-        ["gpio-rp1", "set", str(pin), "op", "pn", "dl"],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    )
+    GPIO.setup(pin, GPIO.OUT)
 
 
-# Run motor
-for _ in range(500):
+def set_motor(state):
+    for pin, value in zip(PINS, state):
+        GPIO.output(
+            pin,
+            GPIO.HIGH if value else GPIO.LOW
+        )
 
-    for state in SEQUENCE:
-        set_motor(state)
 
+try:
+    print("GO!")
 
-# Shut motor off
-set_motor([0, 0, 0, 0])
+    for _ in range(500):
+        for state in SEQUENCE:
+            set_motor(state)
+
+            # Start here
+            time.sleep(0.003)
+
+finally:
+    # Turn all coils off
+    for pin in PINS:
+        GPIO.output(pin, GPIO.LOW)
+
+    GPIO.cleanup()
+
+print("Done")
