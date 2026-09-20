@@ -39,21 +39,26 @@ def stop_motor(pins):
 def spin_motor(motor_number, direction):
     pins = MOTORS[motor_number]
 
-    direction_name = "forward" if direction == 1 else "backward"
+    if direction == 1:
+        sequence = SEQUENCE
+        direction_name = "forward"
+    else:
+        sequence = SEQUENCE[::-1]
+        direction_name = "backward"
+
     print(f"Spinning motor {motor_number} {direction_name}...")
 
     start = time.monotonic()
 
-    # Start at opposite ends depending on direction
-    phase = 0
-
     while time.monotonic() - start < SPIN_TIME:
-        set_motor(pins, SEQUENCE[phase])
+        for state in sequence:
 
-        # Move forward or backward through sequence
-        phase = (phase + direction) % len(SEQUENCE)
+            # Stop after approximately SPIN_TIME
+            if time.monotonic() - start >= SPIN_TIME:
+                break
 
-        time.sleep(STEP_DELAY)
+            set_motor(pins, state)
+            time.sleep(STEP_DELAY)
 
     stop_motor(pins)
 
