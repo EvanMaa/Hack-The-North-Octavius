@@ -5,6 +5,7 @@ import time
 # CONFIG
 # ============================================================
 
+# GPIO pins for each motor
 MOTORS = [
     [17, 18, 27, 22],  # Motor 1
     [23, 24, 25, 5],   # Motor 2
@@ -14,6 +15,7 @@ MOTORS = [
 # Motor 1 is physically reversed
 MOTOR_DIRECTION = [-1, 1, 1]
 
+# Two-coil full-step sequence
 SEQUENCE = [
     [1, 0, 0, 1],
     [1, 1, 0, 0],
@@ -21,29 +23,42 @@ SEQUENCE = [
     [0, 0, 1, 1],
 ]
 
-# Three motor speeds
+# ------------------------------------------------------------
+# MOTOR SPEEDS
+#
+# Smaller delay = faster
+# ------------------------------------------------------------
+
 SPEED_DELAYS = {
-    1: 0.020,
-    2: 0.010,
-    3: 0.005,
+    1: 0.020,  # slow
+    2: 0.010,  # medium
+    3: 0.005,  # fast
 }
 
-# How quickly we move around the circle
-CIRCLE_STEP_TIME = 0.30
+# ------------------------------------------------------------
+# CIRCLE SETTINGS
+# ------------------------------------------------------------
 
-# Commands used to approximate a circular trajectory
+# Time spent on each circle command.
+#
+# 12 commands * 1 second = ~12 second circle.
+CIRCLE_STEP_TIME = 1.0
+
+# Long, gradual circular sequence
 CIRCLE_SEQUENCE = [
-    (-3,  1,  1),
-    (-2, -2,  1),
-
-    ( 1, -3,  1),
-    ( 1, -2, -2),
-
-    ( 1,  1, -3),
-    (-2,  1, -2),
+    (-2,  1,  1),
+    (-2,  0,  2),
+    (-1, -1,  2),
+    ( 0, -2,  2),
+    ( 1, -2,  1),
+    ( 2, -2,  0),
+    ( 2, -1, -1),
+    ( 2,  0, -2),
+    ( 1,  1, -2),
+    ( 0,  2, -2),
+    (-1,  2, -1),
+    (-2,  2,  0),
 ]
-
-CIRCLE_STEP_TIME = 0.5
 
 
 # ============================================================
@@ -58,8 +73,15 @@ for motor in MOTORS:
         GPIO.output(pin, GPIO.LOW)
 
 
+# ============================================================
+# GPIO FUNCTIONS
+# ============================================================
+
 def set_motor(pins, state):
+    """Apply one electrical phase to a motor."""
+
     for pin, value in zip(pins, state):
+
         GPIO.output(
             pin,
             GPIO.HIGH if value else GPIO.LOW
@@ -67,11 +89,15 @@ def set_motor(pins, state):
 
 
 def stop_motor(pins):
+    """Turn all coils off for one motor."""
+
     for pin in pins:
         GPIO.output(pin, GPIO.LOW)
 
 
 def stop_all():
+    """Turn all three motors off."""
+
     for motor in MOTORS:
         stop_motor(motor)
 
@@ -80,13 +106,18 @@ def stop_all():
 # MOTOR STATE
 # ============================================================
 
+# Each motor needs its own phase
 phases = [0, 0, 0]
 
+# Each motor also needs its own timer
 last_steps = [
     time.monotonic(),
     time.monotonic(),
     time.monotonic(),
 ]
+
+# Track whether each motor is energized
+motor_active = [False, False, False]
 
 
 # ============================================================
@@ -95,11 +126,19 @@ last_steps = [
 
 def update_motors(commands):
     """
-    commands example:
+    commands is a tuple such as:
+
         (-2, 1, 1)
 
-    magnitude = speed
-    sign      = direction
+    Sign:
+        + = forward
+        - = backward
+        0 = stop
+
+    Magnitude:
+        1 = slow
+        2 = medium
+        3 = fast
     """
 
     now = time.monotonic()
@@ -107,23 +146,44 @@ def update_motors(commands):
     for i in range(3):
 
         command = commands[i]
+        pins = MOTORS[i]
 
-        # Stop
+        # ----------------------------------------------------
+        # STOP
+        # ----------------------------------------------------
+
         if command == 0:
-            stop_motor(MOTORS[i])
+
+            if motor_active[i]:
+                stop_motor(pins)
+                motor_active[i] = False
+
             continue
 
-        # Speed
-        speed = abs(command)
-        step_delay = SPEED_DELAYS[speed]
+        # ----------------------------------------------------
+        # SPEED
+        # ----------------------------------------------------
 
-        # Direction
-        direction = 1 if command > 0 else -1
+        speed_level = abs(command)
 
-        # Motor 1 is mounted backwards
+        step_delay = SPEED_DELAYS[speed_level]
+
+        # ----------------------------------------------------
+        # DIRECTION
+        # ----------------------------------------------------
+
+        if command > 0:
+            direction = 1
+        else:
+            direction = -1
+
+        # Motor 1 is physically reversed
         direction *= MOTOR_DIRECTION[i]
 
-        # Time for another step?
+        # ----------------------------------------------------
+        # STEP
+        # ----------------------------------------------------
+
         if now - last_steps[i] >= step_delay:
 
             phases[i] = (
@@ -131,35 +191,70 @@ def update_motors(commands):
             ) % len(SEQUENCE)
 
             set_motor(
-                MOTORS[i],
+                pins,
                 SEQUENCE[phases[i]]
             )
 
             last_steps[i] = now
+            motor_active[i] = True
 
 
 # ============================================================
-# CIRCLE
+# CIRCLE TEST
 # ============================================================
 
 def run_circle():
 
-    print("Starting circular motion")
-    print("Ctrl+C to stop")
+    print()
+    print("========================================")
+    print("       SLOW CIRCLE TEST")
+    print("========================================")
+    print()
+    print(
+        f"Number of circle states: "
+        f"{len(CIRCLE_SEQUENCE)}"
+    )
 
+    print(
+        f"Time per state: "
+        f"{CIRCLE_STEP_TIME} seconds"
+    )
+
+    print(
+        f"Approx circle time: "
+        f"{len(CIRCLE_SEQUENCE) * CIRCLE_STEP_TIME} seconds"
+    )
+
+    print()
+    print("Ctrl+C to stop")
+    print()
+
+    # Start at first command
     circle_index = 0
 
-    current_command = CIRCLE_SEQUENCE[0]
+    current_command = (
+        CIRCLE_SEQUENCE[circle_index]
+    )
+
+    print(
+        f"Step {circle_index + 1}/"
+        f"{len(CIRCLE_SEQUENCE)}:",
+        current_command
+    )
 
     next_circle_update = (
-        time.monotonic() + CIRCLE_STEP_TIME
+        time.monotonic()
+        + CIRCLE_STEP_TIME
     )
 
     while True:
 
         now = time.monotonic()
 
-        # Move to next part of circle
+        # ----------------------------------------------------
+        # MOVE TO NEXT PART OF CIRCLE
+        # ----------------------------------------------------
+
         if now >= next_circle_update:
 
             circle_index = (
@@ -170,13 +265,20 @@ def run_circle():
                 CIRCLE_SEQUENCE[circle_index]
             )
 
-            print("Command:", current_command)
+            print(
+                f"Step {circle_index + 1}/"
+                f"{len(CIRCLE_SEQUENCE)}:",
+                current_command
+            )
 
             next_circle_update = (
                 now + CIRCLE_STEP_TIME
             )
 
-        # Continuously step motors
+        # ----------------------------------------------------
+        # CONTINUOUSLY DRIVE MOTORS
+        # ----------------------------------------------------
+
         update_motors(current_command)
 
         # Small CPU break
@@ -193,11 +295,14 @@ try:
 
 except KeyboardInterrupt:
 
-    print("\nStopping circle...")
+    print()
+    print("Stopping circle...")
 
 finally:
 
     stop_all()
+
     GPIO.cleanup()
 
+    print("All motors stopped.")
     print("Done.")
