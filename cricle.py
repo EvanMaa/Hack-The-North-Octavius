@@ -39,42 +39,35 @@ SPEED_DELAYS = {
 # CIRCLE SETTINGS
 # ============================================================
 
-# Faster transition between states
-CIRCLE_STEP_TIME = 0.35
+# Faster transitions
+CIRCLE_STEP_TIME = 0.30
 
-# 18-state stronger/smoother circle
+# Tightness-biased circular trajectory
 CIRCLE_SEQUENCE = [
-    # Around Motor 1
-    (-3,  1,  1),
-    (-3,  0,  2),
-    (-3, -1,  2),
+    (-2,  2,  2),
+    (-2,  1,  3),
+    (-2,  0,  3),
 
-    # Transition M1 -> M2
-    (-2, -2,  3),
-    (-1, -3,  2),
-    ( 0, -3,  2),
+    (-1, -1,  3),
+    ( 0, -2,  3),
+    ( 1, -2,  3),
 
-    # Around Motor 2
-    ( 1, -3,  1),
-    ( 2, -3,  0),
-    ( 2, -3, -1),
+    ( 2, -2,  2),
+    ( 3, -2,  1),
+    ( 3, -2,  0),
 
-    # Transition M2 -> M3
-    ( 3, -2, -2),
-    ( 2, -1, -3),
-    ( 2,  0, -3),
+    ( 3, -1, -1),
+    ( 3,  0, -2),
+    ( 3,  1, -2),
 
-    # Around Motor 3
-    ( 1,  1, -3),
-    ( 0,  2, -3),
-    (-1,  2, -3),
+    ( 2,  2, -2),
+    ( 1,  3, -2),
+    ( 0,  3, -2),
 
-    # Transition M3 -> M1
-    (-2,  3, -2),
-    (-3,  2, -1),
-    (-3,  2,  0),
+    (-1,  3, -1),
+    (-2,  3,  0),
+    (-2,  3,  1),
 ]
-
 
 # ============================================================
 # GPIO SETUP
