@@ -1,0 +1,46 @@
+{
+  "robot_config": "spiral_config.json",
+  "physics_dt": 0.0005,
+  "contact_time_constant_s": 0.001,
+  "collision_margin_m": 0.001,
+  "max_penetration_m": 0.001,
+  "object_mass_kg": 0.025,
+  "cylinder_radius_m": 0.018,
+  "cylinder_length_m": 0.08,
+  "box_size_m": [
+    0.032,
+    0.04,
+    0.08
+  ],
+  "radial_range_m": [
+    0.055,
+    0.105
+  ],
+  "axial_range_m": [
+    0.2,
+    0.27
+  ],
+  "friction": 0.8,
+  "presentation_seconds": 16.0,
+  "episode_seconds": 24.0,
+  "hold_seconds": 2.0,
+  "max_drift_m": 0.035,
+  "max_hold_speed_m_s": 0.04,
+  "max_hold_spin_rad_s": 1.0,
+  "min_contact_force_n": 0.02,
+  "min_contact_links": 3,
+  "min_contact_span_deg": 120.0,
+  "distance_scale_m": 0.1,
+  "approach_reward": 1.0,
+  "contact_reward": 1.0,
+  "contact_saturation_links": 10,
+  "span_reward": 0.5,
+  "hold_reward": 2.0,
+  "success_reward": 20.0,
+  "drop_penalty": 5.0,
+  "training_steps": 3000000,
+  "training_seconds": 1800.0,
+  "training_envs": 4,
+  "evaluation_episodes": 12,
+  "seed": 19
+}

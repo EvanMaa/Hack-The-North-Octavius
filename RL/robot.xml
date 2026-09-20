@@ -1,0 +1,534 @@
+<mujoco model="spiral_robot">
+  <compiler angle="radian"/>
+  <option gravity="0 0 0"/>
+  <asset>
+    <mesh name="baselink_1" file="baselink.stl" scale="0.001000000 0.001000000 0.001000000"/>
+    <mesh name="baselink_2" file="baselink.stl" scale="0.000928540 0.000928540 0.000928540"/>
+    <mesh name="baselink_3" file="baselink.stl" scale="0.000862187 0.000862187 0.000862187"/>
+    <mesh name="baselink_4" file="baselink.stl" scale="0.000800575 0.000800575 0.000800575"/>
+    <mesh name="baselink_5" file="baselink.stl" scale="0.000743366 0.000743366 0.000743366"/>
+    <mesh name="baselink_6" file="baselink.stl" scale="0.000690246 0.000690246 0.000690246"/>
+    <mesh name="baselink_7" file="baselink.stl" scale="0.000640921 0.000640921 0.000640921"/>
+    <mesh name="baselink_8" file="baselink.stl" scale="0.000595121 0.000595121 0.000595121"/>
+    <mesh name="baselink_9" file="baselink.stl" scale="0.000552593 0.000552593 0.000552593"/>
+    <mesh name="baselink_10" file="baselink.stl" scale="0.000513105 0.000513105 0.000513105"/>
+    <mesh name="baselink_11" file="baselink.stl" scale="0.000476439 0.000476439 0.000476439"/>
+    <mesh name="baselink_12" file="baselink.stl" scale="0.000442393 0.000442393 0.000442393"/>
+    <mesh name="baselink_13" file="baselink.stl" scale="0.000410779 0.000410779 0.000410779"/>
+    <mesh name="baselink_14" file="baselink.stl" scale="0.000381425 0.000381425 0.000381425"/>
+    <mesh name="baselink_15" file="baselink.stl" scale="0.000354169 0.000354169 0.000354169"/>
+    <mesh name="baselink_16" file="baselink.stl" scale="0.000328860 0.000328860 0.000328860"/>
+    <mesh name="baselink_17" file="baselink.stl" scale="0.000305360 0.000305360 0.000305360"/>
+    <mesh name="baselink_18" file="baselink.stl" scale="0.000283539 0.000283539 0.000283539"/>
+    <mesh name="baselink_19" file="baselink.stl" scale="0.000263277 0.000263277 0.000263277"/>
+    <mesh name="baselink_20" file="baselink.stl" scale="0.000244463 0.000244463 0.000244463"/>
+    <mesh name="baselink_21" file="baselink.stl" scale="0.000226994 0.000226994 0.000226994"/>
+    <mesh name="baselink_22" file="baselink.stl" scale="0.000210773 0.000210773 0.000210773"/>
+    <mesh name="baselink_23" file="baselink.stl" scale="0.000195711 0.000195711 0.000195711"/>
+    <mesh name="baselink_24" file="baselink.stl" scale="0.000181726 0.000181726 0.000181726"/>
+    <mesh name="baselink_25" file="baselink.stl" scale="0.000168740 0.000168740 0.000168740"/>
+    <mesh name="baselink_26" file="baselink.stl" scale="0.000156682 0.000156682 0.000156682"/>
+    <mesh name="baselink_27" file="baselink.stl" scale="0.000145485 0.000145485 0.000145485"/>
+    <mesh name="baselink_28" file="baselink.stl" scale="0.000135089 0.000135089 0.000135089"/>
+    <mesh name="baselink_29" file="baselink.stl" scale="0.000125435 0.000125435 0.000125435"/>
+    <mesh name="baselink_30" file="baselink.stl" scale="0.000116472 0.000116472 0.000116472"/>
+    <texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" width="512" height="512" mark="cross" markrgb=".8 .8 .8"/>
+    <material name="matplane" reflectance="0.3" texture="texplane" texrepeat="1 1" texuniform="true"/>
+  </asset>
+  <worldbody>
+    <geom name="ground" type="plane" size="10 10 1" pos="0 0 0" quat="1 0 0 0" material="matplane" condim="1"/>
+    <light pos="1 0.5 0.7" dir="-1 -0.5 -1" directional="true" castshadow="false" diffuse="1 1 1" specular="0.3 0.3 0.3"/>
+    <body name="link1" pos="0 0 0.000000000">
+      <geom type="mesh" mesh="baselink_1"/>
+      <site name="s1_1" pos="0.000000000 0.026743856 0.010744829" size="0.001000 0.001000 0.001000"/>
+      <site name="s1_2" pos="0.000000000 0.025584803 0.025669747" size="0.001000 0.001000 0.001000"/>
+      <site name="s1_3" pos="-0.023160859 -0.013371928 0.010744829" size="0.001000 0.001000 0.001000"/>
+      <site name="s1_4" pos="-0.022157089 -0.012792402 0.025669747" size="0.001000 0.001000 0.001000"/>
+      <site name="s1_5" pos="0.023160859 -0.013371928 0.010744829" size="0.001000 0.001000 0.001000"/>
+      <site name="s1_6" pos="0.022157089 -0.012792402 0.025669747" size="0.001000 0.001000 0.001000"/>
+      <body name="link2" pos="0 0 0.026612956">
+        <joint type="ball" stiffness="100.000000" damping="20.000000"/>
+        <geom type="mesh" mesh="baselink_2"/>
+        <site name="s2_1" pos="0.000000000 0.024832746 0.009977006" size="0.000929 0.000929 0.000929"/>
+        <site name="s2_2" pos="0.000000000 0.023756519 0.023835392" size="0.000929 0.000929 0.000929"/>
+        <site name="s2_3" pos="-0.021505789 -0.012416373 0.009977006" size="0.000929 0.000929 0.000929"/>
+        <site name="s2_4" pos="-0.020573749 -0.011878259 0.023835392" size="0.000929 0.000929 0.000929"/>
+        <site name="s2_5" pos="0.021505789 -0.012416373 0.009977006" size="0.000929 0.000929 0.000929"/>
+        <site name="s2_6" pos="0.020573749 -0.011878259 0.023835392" size="0.000929 0.000929 0.000929"/>
+      <body name="link3" pos="0 0 0.024711200">
+        <joint type="ball" stiffness="86.218693" damping="18.570804"/>
+        <geom type="mesh" mesh="baselink_3"/>
+        <site name="s3_1" pos="0.000000000 0.023058203 0.009264051" size="0.000862 0.000862 0.000862"/>
+        <site name="s3_2" pos="0.000000000 0.022058883 0.022132120" size="0.000862 0.000862 0.000862"/>
+        <site name="s3_3" pos="-0.019968990 -0.011529102 0.009264051" size="0.000862 0.000862 0.000862"/>
+        <site name="s3_4" pos="-0.019103553 -0.011029441 0.022132120" size="0.000862 0.000862 0.000862"/>
+        <site name="s3_5" pos="0.019968990 -0.011529102 0.009264051" size="0.000862 0.000862 0.000862"/>
+        <site name="s3_6" pos="0.019103553 -0.011029441 0.022132120" size="0.000862 0.000862 0.000862"/>
+      <body name="link4" pos="0 0 0.022945343">
+        <joint type="ball" stiffness="74.336631" damping="17.243739"/>
+        <geom type="mesh" mesh="baselink_4"/>
+        <site name="s4_1" pos="0.000000000 0.021410469 0.008602044" size="0.000801 0.000801 0.000801"/>
+        <site name="s4_2" pos="0.000000000 0.020482560 0.020550564" size="0.000801 0.000801 0.000801"/>
+        <site name="s4_3" pos="-0.018542010 -0.010705234 0.008602044" size="0.000801 0.000801 0.000801"/>
+        <site name="s4_4" pos="-0.017738417 -0.010241280 0.020550564" size="0.000801 0.000801 0.000801"/>
+        <site name="s4_5" pos="0.018542010 -0.010705234 0.008602044" size="0.000801 0.000801 0.000801"/>
+        <site name="s4_6" pos="0.017738417 -0.010241280 0.020550564" size="0.000801 0.000801 0.000801"/>
+      <body name="link5" pos="0 0 0.021305674">
+        <joint type="ball" stiffness="64.092071" damping="16.011505"/>
+        <geom type="mesh" mesh="baselink_5"/>
+        <site name="s5_1" pos="0.000000000 0.019880481 0.007987344" size="0.000743 0.000743 0.000743"/>
+        <site name="s5_2" pos="0.000000000 0.019018881 0.019082025" size="0.000743 0.000743 0.000743"/>
+        <site name="s5_3" pos="-0.017217002 -0.009940241 0.007987344" size="0.000743 0.000743 0.000743"/>
+        <site name="s5_4" pos="-0.016470834 -0.009509440 0.019082025" size="0.000743 0.000743 0.000743"/>
+        <site name="s5_5" pos="0.017217002 -0.009940241 0.007987344" size="0.000743 0.000743 0.000743"/>
+        <site name="s5_6" pos="0.016470834 -0.009509440 0.019082025" size="0.000743 0.000743 0.000743"/>
+      <body name="link6" pos="0 0 0.019783175">
+        <joint type="ball" stiffness="55.259346" damping="14.867326"/>
+        <geom type="mesh" mesh="baselink_6"/>
+        <site name="s6_1" pos="0.000000000 0.018459827 0.007416570" size="0.000690 0.000690 0.000690"/>
+        <site name="s6_2" pos="0.000000000 0.017659795 0.017718427" size="0.000690 0.000690 0.000690"/>
+        <site name="s6_3" pos="-0.015986679 -0.009229913 0.007416570" size="0.000690 0.000690 0.000690"/>
+        <site name="s6_4" pos="-0.015293831 -0.008829898 0.017718427" size="0.000690 0.000690 0.000690"/>
+        <site name="s6_5" pos="0.015986679 -0.009229913 0.007416570" size="0.000690 0.000690 0.000690"/>
+        <site name="s6_6" pos="0.015293831 -0.008829898 0.017718427" size="0.000690 0.000690 0.000690"/>
+      <body name="link7" pos="0 0 0.018369474">
+        <joint type="ball" stiffness="47.643886" damping="13.804910"/>
+        <geom type="mesh" mesh="baselink_7"/>
+        <site name="s7_1" pos="0.000000000 0.017140691 0.006886583" size="0.000641 0.000641 0.000641"/>
+        <site name="s7_2" pos="0.000000000 0.016397830 0.016452272" size="0.000641 0.000641 0.000641"/>
+        <site name="s7_3" pos="-0.014844274 -0.008570346 0.006886583" size="0.000641 0.000641 0.000641"/>
+        <site name="s7_4" pos="-0.014200938 -0.008198915 0.016452272" size="0.000641 0.000641 0.000641"/>
+        <site name="s7_5" pos="0.014844274 -0.008570346 0.006886583" size="0.000641 0.000641 0.000641"/>
+        <site name="s7_6" pos="0.014200938 -0.008198915 0.016452272" size="0.000641 0.000641 0.000641"/>
+      <body name="link8" pos="0 0 0.017056795">
+        <joint type="ball" stiffness="41.077936" damping="12.818414"/>
+        <geom type="mesh" mesh="baselink_8"/>
+        <site name="s8_1" pos="0.000000000 0.015915821 0.006394470" size="0.000595 0.000595 0.000595"/>
+        <site name="s8_2" pos="0.000000000 0.015226045 0.015276597" size="0.000595 0.000595 0.000595"/>
+        <site name="s8_3" pos="-0.013783506 -0.007957911 0.006394470" size="0.000595 0.000595 0.000595"/>
+        <site name="s8_4" pos="-0.013186142 -0.007613022 0.015276597" size="0.000595 0.000595 0.000595"/>
+        <site name="s8_5" pos="0.013783506 -0.007957911 0.006394470" size="0.000595 0.000595 0.000595"/>
+        <site name="s8_6" pos="0.013186142 -0.007613022 0.015276597" size="0.000595 0.000595 0.000595"/>
+      <body name="link9" pos="0 0 0.015837920">
+        <joint type="ball" stiffness="35.416860" damping="11.902413"/>
+        <geom type="mesh" mesh="baselink_9"/>
+        <site name="s9_1" pos="0.000000000 0.014778480 0.005937522" size="0.000553 0.000553 0.000553"/>
+        <site name="s9_2" pos="0.000000000 0.014137995 0.014184934" size="0.000553 0.000553 0.000553"/>
+        <site name="s9_3" pos="-0.012798539 -0.007389240 0.005937522" size="0.000553 0.000553 0.000553"/>
+        <site name="s9_4" pos="-0.012243863 -0.007068997 0.014184934" size="0.000553 0.000553 0.000553"/>
+        <site name="s9_5" pos="0.012798539 -0.007389240 0.005937522" size="0.000553 0.000553 0.000553"/>
+        <site name="s9_6" pos="0.012243863 -0.007068997 0.014184934" size="0.000553 0.000553 0.000553"/>
+      <body name="link10" pos="0 0 0.014706146">
+        <joint type="ball" stiffness="30.535954" damping="11.051869"/>
+        <geom type="mesh" mesh="baselink_10"/>
+        <site name="s10_1" pos="0.000000000 0.013722413 0.005513228" size="0.000513 0.000513 0.000513"/>
+        <site name="s10_2" pos="0.000000000 0.013127697 0.013171282" size="0.000513 0.000513 0.000513"/>
+        <site name="s10_3" pos="-0.011883958 -0.006861207 0.005513228" size="0.000513 0.000513 0.000513"/>
+        <site name="s10_4" pos="-0.011368919 -0.006563848 0.013171282" size="0.000513 0.000513 0.000513"/>
+        <site name="s10_5" pos="0.011883958 -0.006861207 0.005513228" size="0.000513 0.000513 0.000513"/>
+        <site name="s10_6" pos="0.011368919 -0.006563848 0.013171282" size="0.000513 0.000513 0.000513"/>
+      <body name="link11" pos="0 0 0.013655248">
+        <joint type="ball" stiffness="26.327700" damping="10.262105"/>
+        <geom type="mesh" mesh="baselink_11"/>
+        <site name="s11_1" pos="0.000000000 0.012741812 0.005119254" size="0.000476 0.000476 0.000476"/>
+        <site name="s11_2" pos="0.000000000 0.012189595 0.012230065" size="0.000476 0.000476 0.000476"/>
+        <site name="s11_3" pos="-0.011034733 -0.006370906 0.005119254" size="0.000476 0.000476 0.000476"/>
+        <site name="s11_4" pos="-0.010556499 -0.006094797 0.012230065" size="0.000476 0.000476 0.000476"/>
+        <site name="s11_5" pos="0.011034733 -0.006370906 0.005119254" size="0.000476 0.000476 0.000476"/>
+        <site name="s11_6" pos="0.010556499 -0.006094797 0.012230065" size="0.000476 0.000476 0.000476"/>
+      <body name="link12" pos="0 0 0.012679447">
+        <joint type="ball" stiffness="22.699399" damping="9.528777"/>
+        <geom type="mesh" mesh="baselink_12"/>
+        <site name="s12_1" pos="0.000000000 0.011831285 0.004753433" size="0.000442 0.000442 0.000442"/>
+        <site name="s12_2" pos="0.000000000 0.011318529 0.011356107" size="0.000442 0.000442 0.000442"/>
+        <site name="s12_3" pos="-0.010246194 -0.005915643 0.004753433" size="0.000442 0.000442 0.000442"/>
+        <site name="s12_4" pos="-0.009802133 -0.005659264 0.011356107" size="0.000442 0.000442 0.000442"/>
+        <site name="s12_5" pos="0.010246194 -0.005915643 0.004753433" size="0.000442 0.000442 0.000442"/>
+        <site name="s12_6" pos="0.009802133 -0.005659264 0.011356107" size="0.000442 0.000442 0.000442"/>
+      <body name="link13" pos="0 0 0.011773376">
+        <joint type="ball" stiffness="19.571125" damping="8.847853"/>
+        <geom type="mesh" mesh="baselink_13"/>
+        <site name="s13_1" pos="0.000000000 0.010985824 0.004413754" size="0.000411 0.000411 0.000411"/>
+        <site name="s13_2" pos="0.000000000 0.010509709 0.010544602" size="0.000411 0.000411 0.000411"/>
+        <site name="s13_3" pos="-0.009514003 -0.005492912 0.004413754" size="0.000411 0.000411 0.000411"/>
+        <site name="s13_4" pos="-0.009101675 -0.005254855 0.010544602" size="0.000411 0.000411 0.000411"/>
+        <site name="s13_5" pos="0.009514003 -0.005492912 0.004413754" size="0.000411 0.000411 0.000411"/>
+        <site name="s13_6" pos="0.009101675 -0.005254855 0.010544602" size="0.000411 0.000411 0.000411"/>
+      <body name="link14" pos="0 0 0.010932053">
+        <joint type="ball" stiffness="16.873968" damping="8.215587"/>
+        <geom type="mesh" mesh="baselink_14"/>
+        <site name="s14_1" pos="0.000000000 0.010200780 0.004098348" size="0.000381 0.000381 0.000381"/>
+        <site name="s14_2" pos="0.000000000 0.009758688 0.009791087" size="0.000381 0.000381 0.000381"/>
+        <site name="s14_3" pos="-0.008834134 -0.005100390 0.004098348" size="0.000381 0.000381 0.000381"/>
+        <site name="s14_4" pos="-0.008451271 -0.004879344 0.009791087" size="0.000381 0.000381 0.000381"/>
+        <site name="s14_5" pos="0.008834134 -0.005100390 0.004098348" size="0.000381 0.000381 0.000381"/>
+        <site name="s14_6" pos="0.008451271 -0.004879344 0.009791087" size="0.000381 0.000381 0.000381"/>
+      <body name="link15" pos="0 0 0.010150851">
+        <joint type="ball" stiffness="14.548515" damping="7.628503"/>
+        <geom type="mesh" mesh="baselink_15"/>
+        <site name="s15_1" pos="0.000000000 0.009471834 0.003805481" size="0.000354 0.000354 0.000354"/>
+        <site name="s15_2" pos="0.000000000 0.009061334 0.009091418" size="0.000354 0.000354 0.000354"/>
+        <site name="s15_3" pos="-0.008202849 -0.004735917 0.003805481" size="0.000354 0.000354 0.000354"/>
+        <site name="s15_4" pos="-0.007847345 -0.004530667 0.009091418" size="0.000354 0.000354 0.000354"/>
+        <site name="s15_5" pos="0.008202849 -0.004735917 0.003805481" size="0.000354 0.000354 0.000354"/>
+        <site name="s15_6" pos="0.007847345 -0.004530667 0.009091418" size="0.000354 0.000354 0.000354"/>
+      <body name="link16" pos="0 0 0.009425473">
+        <joint type="ball" stiffness="12.543540" damping="7.083372"/>
+        <geom type="mesh" mesh="baselink_16"/>
+        <site name="s16_1" pos="0.000000000 0.008794979 0.003533542" size="0.000329 0.000329 0.000329"/>
+        <site name="s16_2" pos="0.000000000 0.008413813 0.008441747" size="0.000329 0.000329 0.000329"/>
+        <site name="s16_3" pos="-0.007616675 -0.004397489 0.003533542" size="0.000329 0.000329 0.000329"/>
+        <site name="s16_4" pos="-0.007286576 -0.004206906 0.008441747" size="0.000329 0.000329 0.000329"/>
+        <site name="s16_5" pos="0.007616675 -0.004397489 0.003533542" size="0.000329 0.000329 0.000329"/>
+        <site name="s16_6" pos="0.007286576 -0.004206906 0.008441747" size="0.000329 0.000329 0.000329"/>
+      <body name="link17" pos="0 0 0.008751931">
+        <joint type="ball" stiffness="10.814876" damping="6.577196"/>
+        <geom type="mesh" mesh="baselink_17"/>
+        <site name="s17_1" pos="0.000000000 0.008166492 0.003281036" size="0.000305 0.000305 0.000305"/>
+        <site name="s17_2" pos="0.000000000 0.007812564 0.007838502" size="0.000305 0.000305 0.000305"/>
+        <site name="s17_3" pos="-0.007072389 -0.004083246 0.003281036" size="0.000305 0.000305 0.000305"/>
+        <site name="s17_4" pos="-0.006765879 -0.003906282 0.007838502" size="0.000305 0.000305 0.000305"/>
+        <site name="s17_5" pos="0.007072389 -0.004083246 0.003281036" size="0.000305 0.000305 0.000305"/>
+        <site name="s17_6" pos="0.006765879 -0.003906282 0.007838502" size="0.000305 0.000305 0.000305"/>
+      <body name="link18" pos="0 0 0.008126520">
+        <joint type="ball" stiffness="9.324445" damping="6.107191"/>
+        <geom type="mesh" mesh="baselink_18"/>
+        <site name="s18_1" pos="0.000000000 0.007582916 0.003046574" size="0.000284 0.000284 0.000284"/>
+        <site name="s18_2" pos="0.000000000 0.007254280 0.007278364" size="0.000284 0.000284 0.000284"/>
+        <site name="s18_3" pos="-0.006566998 -0.003791458 0.003046574" size="0.000284 0.000284 0.000284"/>
+        <site name="s18_4" pos="-0.006282390 -0.003627140 0.007278364" size="0.000284 0.000284 0.000284"/>
+        <site name="s18_5" pos="0.006566998 -0.003791458 0.003046574" size="0.000284 0.000284 0.000284"/>
+        <site name="s18_6" pos="0.006282390 -0.003627140 0.007278364" size="0.000284 0.000284 0.000284"/>
+      <body name="link19" pos="0 0 0.007545801">
+        <joint type="ball" stiffness="8.039414" damping="5.670772"/>
+        <geom type="mesh" mesh="baselink_19"/>
+        <site name="s19_1" pos="0.000000000 0.007041042 0.002828866" size="0.000263 0.000263 0.000263"/>
+        <site name="s19_2" pos="0.000000000 0.006735890 0.006758254" size="0.000263 0.000263 0.000263"/>
+        <site name="s19_3" pos="-0.006097721 -0.003520521 0.002828866" size="0.000263 0.000263 0.000263"/>
+        <site name="s19_4" pos="-0.005833452 -0.003367945 0.006758254" size="0.000263 0.000263 0.000263"/>
+        <site name="s19_5" pos="0.006097721 -0.003520521 0.002828866" size="0.000263 0.000263 0.000263"/>
+        <site name="s19_6" pos="0.005833452 -0.003367945 0.006758254" size="0.000263 0.000263 0.000263"/>
+      <body name="link20" pos="0 0 0.007006579">
+        <joint type="ball" stiffness="6.931478" damping="5.265540"/>
+        <geom type="mesh" mesh="baselink_20"/>
+        <site name="s20_1" pos="0.000000000 0.006537891 0.002626716" size="0.000244 0.000244 0.000244"/>
+        <site name="s20_2" pos="0.000000000 0.006254545 0.006275311" size="0.000244 0.000244 0.000244"/>
+        <site name="s20_3" pos="-0.005661980 -0.003268945 0.002626716" size="0.000244 0.000244 0.000244"/>
+        <site name="s20_4" pos="-0.005416595 -0.003127272 0.006275311" size="0.000244 0.000244 0.000244"/>
+        <site name="s20_5" pos="0.005661980 -0.003268945 0.002626716" size="0.000244 0.000244 0.000244"/>
+        <site name="s20_6" pos="0.005416595 -0.003127272 0.006275311" size="0.000244 0.000244 0.000244"/>
+      <body name="link21" pos="0 0 0.006505891">
+        <joint type="ball" stiffness="5.976230" damping="4.889266"/>
+        <geom type="mesh" mesh="baselink_21"/>
+        <site name="s21_1" pos="0.000000000 0.006070695 0.002439012" size="0.000227 0.000227 0.000227"/>
+        <site name="s21_2" pos="0.000000000 0.005807597 0.005826878" size="0.000227 0.000227 0.000227"/>
+        <site name="s21_3" pos="-0.005257376 -0.003035347 0.002439012" size="0.000227 0.000227 0.000227"/>
+        <site name="s21_4" pos="-0.005029526 -0.002903798 0.005826878" size="0.000227 0.000227 0.000227"/>
+        <site name="s21_5" pos="0.005257376 -0.003035347 0.002439012" size="0.000227 0.000227 0.000227"/>
+        <site name="s21_6" pos="0.005029526 -0.002903798 0.005826878" size="0.000227 0.000227 0.000227"/>
+      <body name="link22" pos="0 0 0.006040981">
+        <joint type="ball" stiffness="5.152627" damping="4.539880"/>
+        <geom type="mesh" mesh="baselink_22"/>
+        <site name="s22_1" pos="0.000000000 0.005636884 0.002264720" size="0.000211 0.000211 0.000211"/>
+        <site name="s22_2" pos="0.000000000 0.005392587 0.005410491" size="0.000211 0.000211 0.000211"/>
+        <site name="s22_3" pos="-0.004881685 -0.002818442 0.002264720" size="0.000211 0.000211 0.000211"/>
+        <site name="s22_4" pos="-0.004670117 -0.002696293 0.005410491" size="0.000211 0.000211 0.000211"/>
+        <site name="s22_5" pos="0.004881685 -0.002818442 0.002264720" size="0.000211 0.000211 0.000211"/>
+        <site name="s22_6" pos="0.004670117 -0.002696293 0.005410491" size="0.000211 0.000211 0.000211"/>
+      <body name="link23" pos="0 0 0.005609294">
+        <joint type="ball" stiffness="4.442528" damping="4.215461"/>
+        <geom type="mesh" mesh="baselink_23"/>
+        <site name="s23_1" pos="0.000000000 0.005234074 0.002102884" size="0.000196 0.000196 0.000196"/>
+        <site name="s23_2" pos="0.000000000 0.005007234 0.005023858" size="0.000196 0.000196 0.000196"/>
+        <site name="s23_3" pos="-0.004532841 -0.002617037 0.002102884" size="0.000196 0.000196 0.000196"/>
+        <site name="s23_4" pos="-0.004336392 -0.002503617 0.005023858" size="0.000196 0.000196 0.000196"/>
+        <site name="s23_5" pos="0.004532841 -0.002617037 0.002102884" size="0.000196 0.000196 0.000196"/>
+        <site name="s23_6" pos="0.004336392 -0.002503617 0.005023858" size="0.000196 0.000196 0.000196"/>
+      <body name="link24" pos="0 0 0.005208455">
+        <joint type="ball" stiffness="3.830289" damping="3.914225"/>
+        <geom type="mesh" mesh="baselink_24"/>
+        <site name="s24_1" pos="0.000000000 0.004860048 0.001952612" size="0.000182 0.000182 0.000182"/>
+        <site name="s24_2" pos="0.000000000 0.004649418 0.004664854" size="0.000182 0.000182 0.000182"/>
+        <site name="s24_3" pos="-0.004208925 -0.002430024 0.001952612" size="0.000182 0.000182 0.000182"/>
+        <site name="s24_4" pos="-0.004026514 -0.002324709 0.004664854" size="0.000182 0.000182 0.000182"/>
+        <site name="s24_5" pos="0.004208925 -0.002430024 0.001952612" size="0.000182 0.000182 0.000182"/>
+        <site name="s24_6" pos="0.004026514 -0.002324709 0.004664854" size="0.000182 0.000182 0.000182"/>
+      <body name="link25" pos="0 0 0.004836260">
+        <joint type="ball" stiffness="3.302426" damping="3.634515"/>
+        <geom type="mesh" mesh="baselink_25"/>
+        <site name="s25_1" pos="0.000000000 0.004512750 0.001813079" size="0.000169 0.000169 0.000169"/>
+        <site name="s25_2" pos="0.000000000 0.004317172 0.004331505" size="0.000169 0.000169 0.000169"/>
+        <site name="s25_3" pos="-0.003908156 -0.002256375 0.001813079" size="0.000169 0.000169 0.000169"/>
+        <site name="s25_4" pos="-0.003738780 -0.002158586 0.004331505" size="0.000169 0.000169 0.000169"/>
+        <site name="s25_5" pos="0.003908156 -0.002256375 0.001813079" size="0.000169 0.000169 0.000169"/>
+        <site name="s25_6" pos="0.003738780 -0.002158586 0.004331505" size="0.000169 0.000169 0.000169"/>
+      <body name="link26" pos="0 0 0.004490662">
+        <joint type="ball" stiffness="2.847308" damping="3.374794"/>
+        <geom type="mesh" mesh="baselink_26"/>
+        <site name="s26_1" pos="0.000000000 0.004190270 0.001683517" size="0.000157 0.000157 0.000157"/>
+        <site name="s26_2" pos="0.000000000 0.004008667 0.004021977" size="0.000157 0.000157 0.000157"/>
+        <site name="s26_3" pos="-0.003628880 -0.002095135 0.001683517" size="0.000157 0.000157 0.000157"/>
+        <site name="s26_4" pos="-0.003471608 -0.002004334 0.004021977" size="0.000157 0.000157 0.000157"/>
+        <site name="s26_5" pos="0.003628880 -0.002095135 0.001683517" size="0.000157 0.000157 0.000157"/>
+        <site name="s26_6" pos="0.003471608 -0.002004334 0.004021977" size="0.000157 0.000157 0.000157"/>
+      <body name="link27" pos="0 0 0.004169760">
+        <joint type="ball" stiffness="2.454912" damping="3.133632"/>
+        <geom type="mesh" mesh="baselink_27"/>
+        <site name="s27_1" pos="0.000000000 0.003890834 0.001563213" size="0.000145 0.000145 0.000145"/>
+        <site name="s27_2" pos="0.000000000 0.003722209 0.003734567" size="0.000145 0.000145 0.000145"/>
+        <site name="s27_3" pos="-0.003369561 -0.001945417 0.001563213" size="0.000145 0.000145 0.000145"/>
+        <site name="s27_4" pos="-0.003223527 -0.001861104 0.003734567" size="0.000145 0.000145 0.000145"/>
+        <site name="s27_5" pos="0.003369561 -0.001945417 0.001563213" size="0.000145 0.000145 0.000145"/>
+        <site name="s27_6" pos="0.003223527 -0.001861104 0.003734567" size="0.000145 0.000145 0.000145"/>
+      <body name="link28" pos="0 0 0.003871790">
+        <joint type="ball" stiffness="2.116593" damping="2.909703"/>
+        <geom type="mesh" mesh="baselink_28"/>
+        <site name="s28_1" pos="0.000000000 0.003612796 0.001451506" size="0.000135 0.000135 0.000135"/>
+        <site name="s28_2" pos="0.000000000 0.003456221 0.003467696" size="0.000135 0.000135 0.000135"/>
+        <site name="s28_3" pos="-0.003128773 -0.001806398 0.001451506" size="0.000135 0.000135 0.000135"/>
+        <site name="s28_4" pos="-0.002993175 -0.001728110 0.003467696" size="0.000135 0.000135 0.000135"/>
+        <site name="s28_5" pos="0.003128773 -0.001806398 0.001451506" size="0.000135 0.000135 0.000135"/>
+        <site name="s28_6" pos="0.002993175 -0.001728110 0.003467696" size="0.000135 0.000135 0.000135"/>
+      <body name="link29" pos="0 0 0.003595113">
+        <joint type="ball" stiffness="1.824899" damping="2.701776"/>
+        <geom type="mesh" mesh="baselink_29"/>
+        <site name="s29_1" pos="0.000000000 0.003354626 0.001347782" size="0.000125 0.000125 0.000125"/>
+        <site name="s29_2" pos="0.000000000 0.003209240 0.003219895" size="0.000125 0.000125 0.000125"/>
+        <site name="s29_3" pos="-0.002905191 -0.001677313 0.001347782" size="0.000125 0.000125 0.000125"/>
+        <site name="s29_4" pos="-0.002779283 -0.001604620 0.003219895" size="0.000125 0.000125 0.000125"/>
+        <site name="s29_5" pos="0.002905191 -0.001677313 0.001347782" size="0.000125 0.000125 0.000125"/>
+        <site name="s29_6" pos="0.002779283 -0.001604620 0.003219895" size="0.000125 0.000125 0.000125"/>
+      <body name="link30" pos="0 0 0.003338207">
+        <joint type="ball" stiffness="1.573404" damping="2.508708"/>
+        <geom type="mesh" mesh="baselink_30"/>
+        <site name="s30_1" pos="0.000000000 0.003114905 0.001251470" size="0.000116 0.000116 0.000116"/>
+        <site name="s30_2" pos="0.000000000 0.002979908 0.002989802" size="0.000116 0.000116 0.000116"/>
+        <site name="s30_3" pos="-0.002697587 -0.001557453 0.001251470" size="0.000116 0.000116 0.000116"/>
+        <site name="s30_4" pos="-0.002580676 -0.001489954 0.002989802" size="0.000116 0.000116 0.000116"/>
+        <site name="s30_5" pos="0.002697587 -0.001557453 0.001251470" size="0.000116 0.000116 0.000116"/>
+        <site name="s30_6" pos="0.002580676 -0.001489954 0.002989802" size="0.000116 0.000116 0.000116"/>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+      </body>
+    </body>
+  </worldbody>
+  <tendon>
+    <spatial name="tendon1" width="0.0007" frictionloss="0.1" rgba=".95 .3 .3 1" limited="true" range="0.096650399 0.966503989">
+      <site site="s1_1"/>
+      <site site="s1_2"/>
+      <site site="s2_1"/>
+      <site site="s2_2"/>
+      <site site="s3_1"/>
+      <site site="s3_2"/>
+      <site site="s4_1"/>
+      <site site="s4_2"/>
+      <site site="s5_1"/>
+      <site site="s5_2"/>
+      <site site="s6_1"/>
+      <site site="s6_2"/>
+      <site site="s7_1"/>
+      <site site="s7_2"/>
+      <site site="s8_1"/>
+      <site site="s8_2"/>
+      <site site="s9_1"/>
+      <site site="s9_2"/>
+      <site site="s10_1"/>
+      <site site="s10_2"/>
+      <site site="s11_1"/>
+      <site site="s11_2"/>
+      <site site="s12_1"/>
+      <site site="s12_2"/>
+      <site site="s13_1"/>
+      <site site="s13_2"/>
+      <site site="s14_1"/>
+      <site site="s14_2"/>
+      <site site="s15_1"/>
+      <site site="s15_2"/>
+      <site site="s16_1"/>
+      <site site="s16_2"/>
+      <site site="s17_1"/>
+      <site site="s17_2"/>
+      <site site="s18_1"/>
+      <site site="s18_2"/>
+      <site site="s19_1"/>
+      <site site="s19_2"/>
+      <site site="s20_1"/>
+      <site site="s20_2"/>
+      <site site="s21_1"/>
+      <site site="s21_2"/>
+      <site site="s22_1"/>
+      <site site="s22_2"/>
+      <site site="s23_1"/>
+      <site site="s23_2"/>
+      <site site="s24_1"/>
+      <site site="s24_2"/>
+      <site site="s25_1"/>
+      <site site="s25_2"/>
+      <site site="s26_1"/>
+      <site site="s26_2"/>
+      <site site="s27_1"/>
+      <site site="s27_2"/>
+      <site site="s28_1"/>
+      <site site="s28_2"/>
+      <site site="s29_1"/>
+      <site site="s29_2"/>
+      <site site="s30_1"/>
+      <site site="s30_2"/>
+    </spatial>
+    <spatial name="tendon2" width="0.0007" frictionloss="0.1" rgba=".95 .3 .3 1" limited="true" range="0.096650399 0.966503989">
+      <site site="s1_3"/>
+      <site site="s1_4"/>
+      <site site="s2_3"/>
+      <site site="s2_4"/>
+      <site site="s3_3"/>
+      <site site="s3_4"/>
+      <site site="s4_3"/>
+      <site site="s4_4"/>
+      <site site="s5_3"/>
+      <site site="s5_4"/>
+      <site site="s6_3"/>
+      <site site="s6_4"/>
+      <site site="s7_3"/>
+      <site site="s7_4"/>
+      <site site="s8_3"/>
+      <site site="s8_4"/>
+      <site site="s9_3"/>
+      <site site="s9_4"/>
+      <site site="s10_3"/>
+      <site site="s10_4"/>
+      <site site="s11_3"/>
+      <site site="s11_4"/>
+      <site site="s12_3"/>
+      <site site="s12_4"/>
+      <site site="s13_3"/>
+      <site site="s13_4"/>
+      <site site="s14_3"/>
+      <site site="s14_4"/>
+      <site site="s15_3"/>
+      <site site="s15_4"/>
+      <site site="s16_3"/>
+      <site site="s16_4"/>
+      <site site="s17_3"/>
+      <site site="s17_4"/>
+      <site site="s18_3"/>
+      <site site="s18_4"/>
+      <site site="s19_3"/>
+      <site site="s19_4"/>
+      <site site="s20_3"/>
+      <site site="s20_4"/>
+      <site site="s21_3"/>
+      <site site="s21_4"/>
+      <site site="s22_3"/>
+      <site site="s22_4"/>
+      <site site="s23_3"/>
+      <site site="s23_4"/>
+      <site site="s24_3"/>
+      <site site="s24_4"/>
+      <site site="s25_3"/>
+      <site site="s25_4"/>
+      <site site="s26_3"/>
+      <site site="s26_4"/>
+      <site site="s27_3"/>
+      <site site="s27_4"/>
+      <site site="s28_3"/>
+      <site site="s28_4"/>
+      <site site="s29_3"/>
+      <site site="s29_4"/>
+      <site site="s30_3"/>
+      <site site="s30_4"/>
+    </spatial>
+    <spatial name="tendon3" width="0.0007" frictionloss="0.1" rgba=".95 .3 .3 1" limited="true" range="0.096650399 0.966503989">
+      <site site="s1_5"/>
+      <site site="s1_6"/>
+      <site site="s2_5"/>
+      <site site="s2_6"/>
+      <site site="s3_5"/>
+      <site site="s3_6"/>
+      <site site="s4_5"/>
+      <site site="s4_6"/>
+      <site site="s5_5"/>
+      <site site="s5_6"/>
+      <site site="s6_5"/>
+      <site site="s6_6"/>
+      <site site="s7_5"/>
+      <site site="s7_6"/>
+      <site site="s8_5"/>
+      <site site="s8_6"/>
+      <site site="s9_5"/>
+      <site site="s9_6"/>
+      <site site="s10_5"/>
+      <site site="s10_6"/>
+      <site site="s11_5"/>
+      <site site="s11_6"/>
+      <site site="s12_5"/>
+      <site site="s12_6"/>
+      <site site="s13_5"/>
+      <site site="s13_6"/>
+      <site site="s14_5"/>
+      <site site="s14_6"/>
+      <site site="s15_5"/>
+      <site site="s15_6"/>
+      <site site="s16_5"/>
+      <site site="s16_6"/>
+      <site site="s17_5"/>
+      <site site="s17_6"/>
+      <site site="s18_5"/>
+      <site site="s18_6"/>
+      <site site="s19_5"/>
+      <site site="s19_6"/>
+      <site site="s20_5"/>
+      <site site="s20_6"/>
+      <site site="s21_5"/>
+      <site site="s21_6"/>
+      <site site="s22_5"/>
+      <site site="s22_6"/>
+      <site site="s23_5"/>
+      <site site="s23_6"/>
+      <site site="s24_5"/>
+      <site site="s24_6"/>
+      <site site="s25_5"/>
+      <site site="s25_6"/>
+      <site site="s26_5"/>
+      <site site="s26_6"/>
+      <site site="s27_5"/>
+      <site site="s27_6"/>
+      <site site="s28_5"/>
+      <site site="s28_6"/>
+      <site site="s29_5"/>
+      <site site="s29_6"/>
+      <site site="s30_5"/>
+      <site site="s30_6"/>
+    </spatial>
+  </tendon>
+  <actuator>
+    <motor name="act1" tendon="tendon1" ctrllimited="true" ctrlrange="-1 1" gear="50"/>
+    <motor name="act2" tendon="tendon2" ctrllimited="true" ctrlrange="-1 1" gear="50"/>
+    <motor name="act3" tendon="tendon3" ctrllimited="true" ctrlrange="-1 1" gear="50"/>
+  </actuator>
+</mujoco>

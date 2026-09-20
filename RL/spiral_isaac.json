@@ -1,0 +1,7 @@
+{
+  "robot_config": "spiral_config.json",
+  "pulls_mm": [0.0, 0.0, 0.0],
+  "render_interval": 10,
+  "telemetry_interval": 500
+}
+j
