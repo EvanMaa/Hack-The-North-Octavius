@@ -1,5 +1,11 @@
 import rpi_gpio as GPIO
 import time
+# Direction of the Spool tightening
+DIRECTION = {
+    "1": -1,
+    "2": 1,
+    "3": 1,
+}
 
 # ============================================================
 # CONFIG
@@ -26,7 +32,7 @@ SEQUENCE = [
 STEP_DELAY = 0.004
 
 # How long each command spins the motor
-SPIN_TIME = 2.0
+SPIN_TIME = 0.5
 
 
 # ============================================================
@@ -68,6 +74,7 @@ def spin_motor(motor_number, direction):
     """
 
     pins = MOTORS[motor_number]
+    direction =* DIRECTION[motor_number]
 
     if direction > 0:
         direction_name = "FORWARD"
