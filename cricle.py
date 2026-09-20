@@ -47,10 +47,17 @@ CIRCLE_STEP_TIME = 0.333
 CIRCLE_SEQUENCE = []
 
 for i in range(18):
-    circle_sequence[i]: = ((round(math.sin(i * 2 * math.pi / 18) * 3), 
-    round(math.sin(i * 2 * math.pi / 18) + math.pi * 2 / 3) * 3), 
-    round(math.sin(i * 2 * math.pi / 18 + math.pi * 4/  3) * 3))
+    CIRCLE_SEQUENCE.append((
+        round(math.sin(i * 2 * math.pi / 18) * 3),
 
+        round(math.sin(
+            i * 2 * math.pi / 18 + math.pi * 2 / 3
+        ) * 3),
+
+        round(math.sin(
+            i * 2 * math.pi / 18 + math.pi * 4 / 3
+        ) * 3)
+    ))
 
 # ============================================================
 # GPIO SETUP
