@@ -1,0 +1,7 @@
+[tool.mypy]
+files = ["spiral.py", "test_spiral.py"]
+
+[[tool.mypy.overrides]]
+# These installed simulation libraries do not ship usable type declarations.
+module = ["mujoco", "mujoco.*", "scipy", "scipy.*"]
+ignore_missing_imports = true
